@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SPACE</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <script type="text/javascript" src="paperjs-0.22/lib/paper.js"></script>
+    <script type="text/paperscript" canvas="canvas">
+            //Sun
+            var sun = new Path.Star(view.center, 12, 10, 5);
+            var bound = sun.bounds.center;
+
+            //Planets
+            var mercury = new Path.Circle(bound + 20, 3);
+            var venus = new Path.Circle(bound + 50, 5);
+            var earth = new Path.Circle(bound + 100, 5);
+            var mars = new Path.Circle(bound + 150, 7);
+            var jupiter = new Path.Circle(bound + 240, 10);
+            var saturn = new Path.Circle(bound + 275, 6);
+            var uranus = new Path.Circle(bound + 300, 8);
+            var neptune = new Path.Circle(bound + 350, 4);
+            var pluto = new Path.Circle(bound + 400, 3);
+
+            var mer_path = new Path.Circle(view.center, 28);
+            var ven_path = new Path.Circle(view.center, 70);
+            var ear_path = new Path.Circle(view.center, 142);
+            var mar_path = new Path.Circle(view.center, 212);
+            var jup_path = new Path.Circle(view.center, 340);
+            var sat_path = new Path.Circle(view.center, 388);
+            var ura_path = new Path.Circle(view.center, 425);
+            var nep_path = new Path.Circle(view.center, 495);
+            var plu_path = new Path.Circle(view.center, 565);
+
+            // Orbit Path Group
+            var group = new Group();
+            group.addChild(mer_path);
+            group.addChild(ven_path);
+            group.addChild(ear_path);
+            group.addChild(mar_path);
+            group.addChild(jup_path);
+            group.addChild(sat_path);
+            group.addChild(ura_path);
+            group.addChild(nep_path);
+            group.addChild(plu_path);
+            group.strokeColor = 'grey';
+            group.strokeWidth = 0.3;
+
+
+            sun.fillColor = 'yellow';
+            mercury.fillColor = 'red';
+            venus.fillColor = 'purple';
+            earth.fillColor = 'green';
+            mars.fillColor = 'red';
+            jupiter.fillColor = 'blue';
+            saturn.fillColor = 'orange';
+            uranus.fillColor = 'brown';
+            neptune.fillColor = 'blue';
+            pluto.fillColor = 'grey';
+
+
+
+
+        function onFrame(event) {
+            // Rotate the group by 1 degree from
+           // the centerpoint of the view:
+            sun.rotate(1, view.center);
+            mercury.rotate(1.5, view.center);
+            venus.rotate(.7, view.center);
+            earth.rotate(.6, view.center);
+            mars.rotate(.4, view.center);
+            jupiter.rotate(1.2, view.center);
+            saturn.rotate(.9, view.center);
+            uranus.rotate(.85, view.center);
+            neptune.rotate(.5, view.center);
+            pluto.rotate(1.2, view.center);
+
+
+        }
+
+        function onResize(event) {
+
+            //Sun
+            sun.position = view.center;
+            var resize_bound = sun.bounds.center;
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" resize></canvas>
+</body>
+</html>
